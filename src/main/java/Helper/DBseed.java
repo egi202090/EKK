@@ -38,12 +38,15 @@ public class DBseed {
                 "kategorieFK int not null,"+
                 "frage varchar(50),"+
                 "antwort varchar(50),"+
-                "richtig enum('Ja','Nein'))";
-        String str4 = " ALTER TABLE Kategorie" +
-                "ADD FOREIGN KEY (benutzerFK) REFERENCES Benutzer(id)";
+                "richtig enum('Ja','Nein'));";
+        String str4 = " ALTER TABLE Kategorie " +
+                "ADD CONSTRAINT FK_kategoriebenutzer "+
+                "FOREIGN KEY (benutzerFK) REFERENCES Benutzer(id)";
 
-        String str5 ="ALTER TABLE Karte" +
-                "ADD FOREIGN KEY (kategorieFK) REFERENCES Kategorie(id)";
+        String str5 ="ALTER TABLE Karte " +
+                "ADD CONSTRAINT FK_kategoriekarte "+
+                "FOREIGN KEY (kategorieFK) REFERENCES Kategorie(id)";
+
         try{
             Statement stmt = DBconnection.getInstance().createStatement();
             stmt.execute(str1);

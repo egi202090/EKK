@@ -14,7 +14,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/sample.fxml"));
         primaryStage.setTitle("Egzons Kartei Karten - EKK");
         Scene scene = new Scene(root, 500, 400);
-        scene.getStylesheets().add("../Assets/css/styles.css");
+        scene.getStylesheets().add(String.valueOf(getClass().getClassLoader().getResource("css/styles.css")));
         primaryStage.setScene(scene);
         DBseed.DBtables();
         primaryStage.show();
