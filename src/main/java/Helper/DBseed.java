@@ -17,6 +17,7 @@ public class DBseed {
 
     public static void DBtables(){
         createTables();
+        fillTables();
         }
 
     private static void createTables(){
@@ -25,7 +26,7 @@ public class DBseed {
                 "benutzerFK int not null,"+
                 "kategorieName varchar(50),"+
                 "kategorieFarbe int);";
-        String str2 = "Create Table if not exists Benutzer (" +
+        String str2 = "Create Table if not exists BenutzerManager (" +
                 "id int not null auto_increment primary key, "+
                 "benutzername varchar(50),"+
                 "passwort varchar(50),"+
@@ -41,7 +42,7 @@ public class DBseed {
                 "richtig enum('Ja','Nein'));";
         String str4 = " ALTER TABLE Kategorie " +
                 "ADD CONSTRAINT FK_kategoriebenutzer "+
-                "FOREIGN KEY (benutzerFK) REFERENCES Benutzer(id)";
+                "FOREIGN KEY (benutzerFK) REFERENCES BenutzerManager(id)";
 
         String str5 ="ALTER TABLE Karte " +
                 "ADD CONSTRAINT FK_kategoriekarte "+
@@ -61,8 +62,23 @@ public class DBseed {
     }
 
     private static void fillTables(){
-       // String
+       String str1= "Insert INTO BenutzerManager(benutzername, passwort, nachname, vorname, email, erstellDatum) "+
+                    "Values('egi202090','starkespasswort','neziri','egzon','egzon@outlook.com','2008-01-02')";
 
+       String str2= "Insert INTO Kategorie(benutzerFK, kategorieName, kategorieFarbe) "+
+                    "Values('1','M326','125')";
+       String str3= "Insert INTO Karte(kategorieFK, frage, antwort, richtig) "+
+                    "Values('1', 'wie geht es dir', 'scheisse','ja')";
+
+        try{
+            Statement stmt = DBconnection.getInstance().createStatement();
+            stmt.execute(str1);
+            stmt.execute(str2);
+            stmt.execute(str3);
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
 }
+
