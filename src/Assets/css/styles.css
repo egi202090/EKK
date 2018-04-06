@@ -1,0 +1,13 @@
+Button{
+    -fx-background-color: red;
+    -fx-transition-duration: 500ms;
+}
+
+Button:hover{
+    -fx-background-color: yellow;
+    -fx-transition-duration: 500ms;
+}
+
+Button.yellowButton{
+    -fx-background-color: yellow;
+}

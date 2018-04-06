@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class Controller {
+public class kategorienController {
     protected Connection connection = DBconnection.getInstance();
     protected WindowService windowService = WindowService.getInstance();
 
-    public Controller() throws SQLException {
+    public kategorienController() throws SQLException {
     }
 
     @FXML
@@ -21,18 +21,9 @@ public class Controller {
     }
 
     @FXML
-    void loginLoad() throws IOException {
-        this.loadPage("FXML/login.fxml");
-    }
-
-    @FXML
-    void kategorienLoad() throws IOException {
-        this.loadPage("FXML/kategorien.fxml");
+    void kategorienKartenLoad() throws IOException {
+        this.loadPage("FXML/kategorienKarten.fxml");
 
     }
 
-    @FXML
-    public void testButton()throws IOException{
-        System.out.println("hallo");
-    }
 }

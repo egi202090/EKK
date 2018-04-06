@@ -2,3 +2,7 @@
 .buttonHover:hover{
     -fx-background-color: black;
     }
+
+#kartenFarbe{
+    -fx-background-color: #A9E2F3;
+}
